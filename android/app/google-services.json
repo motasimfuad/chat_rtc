@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "230866319889",
+    "project_id": "chat-rtc-5693f",
+    "storage_bucket": "chat-rtc-5693f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:230866319889:android:abd8004568f96a28e94fb0",
+        "android_client_info": {
+          "package_name": "dev.motasimfuad.chat_rtc"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxNy-dn3mHp6zrSL0e56PiSS5OJpgAU8w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
