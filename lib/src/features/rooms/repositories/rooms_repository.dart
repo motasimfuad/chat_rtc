@@ -22,13 +22,13 @@ class RoomsRepository {
     }
   }
 
-  Future<bool> joinRoom(String roomId, String userId) async {
-    if (userId.trim().isEmpty) {
+  Future<bool> joinRoom(String roomId, String userEmail) async {
+    if (userEmail.trim().isEmpty) {
       return false;
     }
     try {
       await _firestore.collection('rooms').doc(roomId).update({
-        'users': FieldValue.arrayUnion([userId])
+        'users': FieldValue.arrayUnion([userEmail])
       });
       return true;
     } on FirebaseException catch (e) {

@@ -66,7 +66,7 @@ class RoomsPage extends GetView<RoomsController> {
                 final room = controller.rooms[index];
                 return RoomCard(
                   room: room,
-                  userId: authController.currentUser!.uid,
+                  userEmail: authController.currentUser!.email!,
                   onJoin: () => (room.id?.isNotEmpty ?? false)
                       ? controller.joinRoom(room.id!)
                       : null,

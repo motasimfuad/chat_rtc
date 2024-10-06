@@ -6,7 +6,7 @@ import '../repositories/rooms_repository.dart';
 
 class RoomsController extends GetxController {
   final RoomsRepository _roomRepository = RoomsRepository();
-  final userId = Get.find<AuthController>().currentUser?.uid;
+  final userEmail = Get.find<AuthController>().currentUser?.email;
   final RxList<Room> rooms = <Room>[].obs;
   final RxBool isLoading = false.obs;
 
@@ -23,7 +23,10 @@ class RoomsController extends GetxController {
     try {
       rooms.value = await _roomRepository.getRooms();
     } catch (e) {
-      Get.snackbar('Error', 'Failed to fetch rooms: $e');
+      Get.snackbar(
+        'Error',
+        'Failed to fetch rooms: $e',
+      );
     } finally {
       isLoading.value = false;
     }
@@ -31,14 +34,14 @@ class RoomsController extends GetxController {
 
   Future<void> joinRoom(String roomId) async {
     try {
-      if (userId == null) {
+      if (userEmail == null) {
         Get.snackbar(
           'Error',
           'User not authenticated',
         );
         return;
       }
-      bool success = await _roomRepository.joinRoom(roomId, userId!);
+      bool success = await _roomRepository.joinRoom(roomId, userEmail!);
       if (success) {
         await fetchRooms(showLoading: false);
         Get.snackbar(

@@ -11,7 +11,7 @@ class Room {
     this.createdAt,
   });
 
-  bool userJoined(String userId) => users.contains(userId);
+  bool userJoined(String email) => users.contains(email) || users.contains(id);
 
   factory Room.fromMap(Map<String, dynamic> map) {
     return Room(

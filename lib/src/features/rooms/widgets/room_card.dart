@@ -5,14 +5,14 @@ import '../models/room_model.dart';
 
 class RoomCard extends StatelessWidget {
   final Room room;
-  final String userId;
+  final String userEmail;
   final Function()? onTap;
   final Function()? onJoin;
 
   const RoomCard({
     Key? key,
     required this.room,
-    required this.userId,
+    required this.userEmail,
     required this.onTap,
     required this.onJoin,
   }) : super(key: key);
@@ -20,7 +20,7 @@ class RoomCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: room.userJoined(userId) ? onTap : null,
+      onTap: room.userJoined(userEmail) ? onTap : null,
       child: Card(
         elevation: 0.5,
         shadowColor: AppColors.primary.shade600,
@@ -70,7 +70,7 @@ class RoomCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  if (!room.userJoined(userId))
+                  if (!room.userJoined(userEmail))
                     IconButton(
                       onPressed: onJoin,
                       icon: const Icon(
