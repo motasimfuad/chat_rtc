@@ -3,6 +3,7 @@ import 'package:chat_rtc/src/features/authentication/screens/login_screen.dart';
 import 'package:chat_rtc/src/features/authentication/screens/signup_screen.dart';
 import 'package:chat_rtc/src/features/authentication/screens/splash_screen.dart';
 import 'package:chat_rtc/src/features/rooms/bindings/rooms_binding.dart';
+import 'package:chat_rtc/src/features/rooms/screens/room_details_screen.dart';
 import 'package:chat_rtc/src/features/rooms/screens/rooms_page.dart';
 import 'package:get/get.dart';
 
@@ -32,6 +33,11 @@ class AppPages {
         RoomsBinding(),
         AuthBinding(),
       ],
+    ),
+    GetPage(
+      name: AppRoutes.roomDetails,
+      page: () => RoomDetailsScreen(),
+      binding: RoomsBinding(),
     ),
   ];
 }

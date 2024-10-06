@@ -1,14 +1,14 @@
 class Room {
-  final String id;
-  final String name;
+  final String? id;
+  final String? name;
   final List<String> users;
-  final DateTime createdAt;
+  final DateTime? createdAt;
 
   Room({
-    required this.id,
-    required this.name,
-    required this.users,
-    required this.createdAt,
+    this.id,
+    this.name,
+    this.users = const [],
+    this.createdAt,
   });
 
   bool userJoined(String userId) => users.contains(userId);
@@ -28,7 +28,7 @@ class Room {
       'id': id,
       'name': name,
       'users': users,
-      'createdAt': createdAt.toIso8601String(),
+      'createdAt': createdAt?.toIso8601String(),
     };
   }
 }

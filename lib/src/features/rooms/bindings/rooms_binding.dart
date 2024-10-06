@@ -1,12 +1,11 @@
+import 'package:chat_rtc/src/features/rooms/controllers/room_controller.dart';
+import 'package:chat_rtc/src/features/rooms/controllers/room_details_controller.dart';
 import 'package:get/get.dart';
-
-import '../controllers/room_controller.dart';
-import '../repositories/rooms_repository.dart';
 
 class RoomsBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<RoomsRepository>(() => RoomsRepository());
     Get.lazyPut<RoomsController>(() => RoomsController());
+    Get.lazyPut<RoomDetailsController>(() => RoomDetailsController());
   }
 }

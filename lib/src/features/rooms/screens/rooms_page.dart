@@ -1,3 +1,4 @@
+import 'package:chat_rtc/src/core/routes/app_routes.dart';
 import 'package:chat_rtc/src/core/theme/app_colors.dart';
 import 'package:chat_rtc/src/features/rooms/widgets/room_card.dart';
 import 'package:flutter/material.dart';
@@ -66,8 +67,15 @@ class RoomsPage extends GetView<RoomsController> {
                 return RoomCard(
                   room: room,
                   userId: authController.currentUser!.uid,
-                  onJoin: () => controller.joinRoom(room.id),
-                  onTap: () {},
+                  onJoin: () => (room.id?.isNotEmpty ?? false)
+                      ? controller.joinRoom(room.id!)
+                      : null,
+                  onTap: () {
+                    Get.toNamed(
+                      AppRoutes.roomDetails,
+                      arguments: room,
+                    );
+                  },
                 );
               },
             ),

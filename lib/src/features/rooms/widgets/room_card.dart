@@ -20,7 +20,7 @@ class RoomCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (room.userJoined(userId)) ? onTap : null,
+      onTap: room.userJoined(userId) ? onTap : null,
       child: Card(
         elevation: 0.5,
         shadowColor: AppColors.primary.shade600,
@@ -42,7 +42,7 @@ class RoomCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    room.name,
+                    room.name ?? 'N/A',
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
