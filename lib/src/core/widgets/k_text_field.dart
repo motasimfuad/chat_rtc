@@ -22,9 +22,15 @@ class KTextField extends StatelessWidget {
       controller: controller,
       obscureText: isPassword,
       decoration: InputDecoration(
+        errorStyle: const TextStyle(
+          color: AppColors.danger,
+        ),
         hintText: hintText,
+        hintStyle: TextStyle(
+          color: AppColors.primary.shade300,
+        ),
         filled: true,
-        fillColor: AppColors.grey200,
+        fillColor: AppColors.primary,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: BorderSide.none,

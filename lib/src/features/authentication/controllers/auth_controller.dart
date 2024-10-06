@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/routes/app_routes.dart';
@@ -39,4 +40,6 @@ class AuthController extends GetxController {
       Get.snackbar('Error', e.toString());
     }
   }
+
+  User? get currentUser => _firebaseService.currentUser;
 }
