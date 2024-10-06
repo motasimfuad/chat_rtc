@@ -16,7 +16,7 @@ class KButton extends StatelessWidget {
     required this.text,
     required this.onPressed,
     this.isLoading = false,
-    this.color = AppColors.primary,
+    this.color = AppColors.success,
     this.textColor = AppColors.white,
     this.fontSize = 16,
     this.borderRadius = 12,

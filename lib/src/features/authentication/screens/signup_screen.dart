@@ -42,7 +42,7 @@ class SignupScreen extends GetView<AuthController> {
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
-                        color: AppColors.primary,
+                        color: AppColors.success,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -81,10 +81,6 @@ class SignupScreen extends GetView<AuthController> {
                         text: 'Sign Up',
                         onPressed: _submitForm,
                         isLoading: controller.isLoading.value,
-                        color: AppColors.primary,
-                        textColor: AppColors.white,
-                        fontSize: 16,
-                        borderRadius: 12,
                       ),
                     ),
                     const SizedBox(height: 24),
@@ -98,7 +94,7 @@ class SignupScreen extends GetView<AuthController> {
                             TextSpan(
                               text: 'Log in',
                               style: TextStyle(
-                                color: AppColors.primary,
+                                color: AppColors.success,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),

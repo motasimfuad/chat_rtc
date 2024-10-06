@@ -1,4 +1,4 @@
-import 'package:chat_rtc/core/routes/app_routes.dart';
+import 'package:chat_rtc/src/core/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -26,7 +26,6 @@ class LoginScreen extends GetView<AuthController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -43,7 +42,7 @@ class LoginScreen extends GetView<AuthController> {
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
-                        color: AppColors.primary,
+                        color: AppColors.success,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -82,10 +81,6 @@ class LoginScreen extends GetView<AuthController> {
                         text: 'Log In',
                         onPressed: _submitForm,
                         isLoading: controller.isLoading.value,
-                        color: AppColors.primary,
-                        textColor: AppColors.white,
-                        fontSize: 16,
-                        borderRadius: 12,
                       ),
                     ),
                     const SizedBox(height: 24),
@@ -99,7 +94,7 @@ class LoginScreen extends GetView<AuthController> {
                             TextSpan(
                               text: 'Sign up',
                               style: TextStyle(
-                                color: AppColors.primary,
+                                color: AppColors.success,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),

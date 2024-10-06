@@ -1,5 +1,6 @@
-import 'package:chat_rtc/core/routes/app_routes.dart';
-import 'package:chat_rtc/core/services/firebase/firebase_auth_service.dart';
+import 'package:chat_rtc/src/core/routes/app_routes.dart';
+import 'package:chat_rtc/src/core/services/firebase/firebase_auth_service.dart';
+import 'package:chat_rtc/src/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -39,7 +40,9 @@ class _SplashScreenState extends State<SplashScreen> {
           children: [
             FlutterLogo(size: 100),
             SizedBox(height: 100),
-            CircularProgressIndicator(),
+            CircularProgressIndicator(
+              color: AppColors.secondary,
+            ),
           ],
         ),
       ),

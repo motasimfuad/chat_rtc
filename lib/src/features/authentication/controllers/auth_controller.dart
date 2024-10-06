@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
-import '../../../../core/routes/app_routes.dart';
-import '../../../../core/services/firebase/firebase_auth_service.dart';
+import '../../../core/routes/app_routes.dart';
+import '../../../core/services/firebase/firebase_auth_service.dart';
 
 class AuthController extends GetxController {
   final FirebaseAuthService _firebaseService = FirebaseAuthService();

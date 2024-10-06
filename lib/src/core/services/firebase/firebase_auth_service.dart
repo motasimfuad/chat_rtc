@@ -1,7 +1,7 @@
 import 'dart:developer';
 
-import 'package:chat_rtc/core/services/cache/cache_keys.dart';
-import 'package:chat_rtc/core/services/cache/cache_service.dart';
+import 'package:chat_rtc/src/core/services/cache/cache_keys.dart';
+import 'package:chat_rtc/src/core/services/cache/cache_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class FirebaseAuthService {

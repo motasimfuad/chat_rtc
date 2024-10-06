@@ -1,6 +1,7 @@
-import 'package:chat_rtc/core/routes/app_pages.dart';
-import 'package:chat_rtc/core/routes/app_routes.dart';
-import 'package:chat_rtc/core/services/cache/cache_service.dart';
+import 'package:chat_rtc/src/core/routes/app_pages.dart';
+import 'package:chat_rtc/src/core/routes/app_routes.dart';
+import 'package:chat_rtc/src/core/services/cache/cache_service.dart';
+import 'package:chat_rtc/src/core/theme/app_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,10 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Chat RTC',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      theme: AppTheme.dark,
       initialRoute: AppRoutes.splash,
       getPages: AppPages.pages,
     );
