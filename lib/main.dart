@@ -1,3 +1,4 @@
+import 'package:chat_rtc/firebase_options.dart';
 import 'package:chat_rtc/src/core/routes/app_pages.dart';
 import 'package:chat_rtc/src/core/routes/app_routes.dart';
 import 'package:chat_rtc/src/core/services/cache/cache_service.dart';
@@ -8,7 +9,9 @@ import 'package:get/get.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   await CacheService.init();
   runApp(const MyApp());
 }
