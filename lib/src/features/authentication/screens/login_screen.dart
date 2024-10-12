@@ -11,8 +11,8 @@ class LoginScreen extends GetView<AuthController> {
   LoginScreen({super.key});
 
   final _formKey = GlobalKey<FormState>();
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
+  final _emailController = TextEditingController(text: 'user1@gmail.com');
+  final _passwordController = TextEditingController(text: '111111');
 
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
