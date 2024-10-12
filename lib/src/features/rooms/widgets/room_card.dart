@@ -8,6 +8,7 @@ class RoomCard extends StatelessWidget {
   final String userEmail;
   final Function()? onTap;
   final Function()? onJoin;
+  final bool? isLoading;
 
   const RoomCard({
     Key? key,
@@ -15,6 +16,7 @@ class RoomCard extends StatelessWidget {
     required this.userEmail,
     required this.onTap,
     required this.onJoin,
+    this.isLoading,
   }) : super(key: key);
 
   @override
@@ -71,14 +73,24 @@ class RoomCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   if (!room.userJoined(userEmail))
-                    IconButton(
-                      onPressed: onJoin,
-                      icon: const Icon(
-                        Icons.add_circle_outline_rounded,
-                        size: 30,
-                        color: Colors.deepPurple,
-                      ),
-                    ),
+                    isLoading == true
+                        ? Container(
+                            height: 18,
+                            width: 18,
+                            margin: const EdgeInsets.all(15),
+                            child: const CircularProgressIndicator(
+                              color: AppColors.secondary,
+                              strokeWidth: 2,
+                            ),
+                          )
+                        : IconButton(
+                            onPressed: onJoin,
+                            icon: Icon(
+                              Icons.add_circle_outline_rounded,
+                              size: 30,
+                              color: AppColors.primary.shade200,
+                            ),
+                          ),
                 ],
               ),
             ),

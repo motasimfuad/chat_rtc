@@ -7,8 +7,8 @@ import 'package:get/get.dart';
 import '../../../features/authentication/controllers/auth_controller.dart';
 import '../controllers/room_controller.dart';
 
-class RoomsPage extends GetView<RoomsController> {
-  const RoomsPage({Key? key}) : super(key: key);
+class RoomsScreen extends GetView<RoomsController> {
+  const RoomsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -63,20 +63,24 @@ class RoomsPage extends GetView<RoomsController> {
               ),
               itemCount: controller.rooms.length,
               itemBuilder: (BuildContext context, int index) {
-                final room = controller.rooms[index];
-                return RoomCard(
-                  room: room,
-                  userEmail: authController.currentUser!.email!,
-                  onJoin: () => (room.id?.isNotEmpty ?? false)
-                      ? controller.joinRoom(room.id!)
-                      : null,
-                  onTap: () {
-                    Get.toNamed(
-                      AppRoutes.roomDetails,
-                      arguments: room,
-                    );
-                  },
-                );
+                return Obx(() {
+                  final room = controller.rooms[index];
+                  return RoomCard(
+                    room: controller.rooms[index],
+                    userEmail: authController.currentUser!.email!,
+                    isLoading: controller.isJoiningRoom.value == room.id,
+                    onJoin: () async {
+                      if (room.id?.isNotEmpty ?? false) {
+                        await controller.joinRoom(room.id!);
+                        Get.toNamed(AppRoutes.roomDetails);
+                      }
+                    },
+                    onTap: () {
+                      controller.roomDetails.value = room;
+                      Get.toNamed(AppRoutes.roomDetails);
+                    },
+                  );
+                });
               },
             ),
           );

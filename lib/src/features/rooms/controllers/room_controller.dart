@@ -9,6 +9,8 @@ class RoomsController extends GetxController {
   final userEmail = Get.find<AuthController>().currentUser?.email;
   final RxList<Room> rooms = <Room>[].obs;
   final RxBool isLoading = false.obs;
+  final Rx<String?> isJoiningRoom = Rx<String?>(null);
+  final Rx<Room?> roomDetails = Rx<Room?>(null);
 
   @override
   void onInit() {
@@ -33,6 +35,7 @@ class RoomsController extends GetxController {
   }
 
   Future<void> joinRoom(String roomId) async {
+    isJoiningRoom.value = roomId;
     try {
       if (userEmail == null) {
         Get.snackbar(
@@ -44,21 +47,25 @@ class RoomsController extends GetxController {
       bool success = await _roomRepository.joinRoom(roomId, userEmail!);
       if (success) {
         await fetchRooms(showLoading: false);
+        roomDetails.value = rooms.firstWhere((element) => element.id == roomId);
         Get.snackbar(
           'Success',
           'Joined room successfully',
         );
+        isJoiningRoom.value = null;
       } else {
         Get.snackbar(
           'Error',
           'Failed to join room',
         );
+        isJoiningRoom.value = null;
       }
     } catch (e) {
       Get.snackbar(
         'Error',
         'Failed to join room: $e',
       );
+      isJoiningRoom.value = null;
     }
   }
 }
