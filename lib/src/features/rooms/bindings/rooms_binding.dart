@@ -1,3 +1,4 @@
+import 'package:chat_rtc/src/features/chat/controllers/chat_controller.dart';
 import 'package:chat_rtc/src/features/rooms/controllers/room_controller.dart';
 import 'package:chat_rtc/src/features/rooms/controllers/room_details_controller.dart';
 import 'package:get/get.dart';
@@ -7,5 +8,6 @@ class RoomsBinding extends Bindings {
   void dependencies() {
     Get.lazyPut<RoomsController>(() => RoomsController());
     Get.lazyPut<RoomDetailsController>(() => RoomDetailsController());
+    Get.lazyPut<ChatController>(() => ChatController());
   }
 }

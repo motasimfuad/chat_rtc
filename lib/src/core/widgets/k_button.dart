@@ -27,8 +27,11 @@ class KButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        fixedSize: const Size(double.infinity, 50),
-        padding: const EdgeInsets.symmetric(vertical: 8),
+        fixedSize: const Size(double.infinity, 46),
+        padding: const EdgeInsets.symmetric(
+          vertical: 8,
+          horizontal: 16,
+        ),
         backgroundColor: color,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(borderRadius),
