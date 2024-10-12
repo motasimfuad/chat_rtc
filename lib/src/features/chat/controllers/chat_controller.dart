@@ -8,6 +8,13 @@ class ChatController extends GetxController {
   String? targetUserEmail;
   String? senderEmail;
 
+  @override
+  void onInit() {
+    super.onInit();
+    ever(callController.webRTCService.firebaseData, (_) {
+      callController.checkForIncomingCall();
+    });
+  }
 
   Future<void> initializeChat(
     String roomId,
