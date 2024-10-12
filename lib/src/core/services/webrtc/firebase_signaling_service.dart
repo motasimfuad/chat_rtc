@@ -3,11 +3,15 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class FirestoreSignalingService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  Future<String> createOrGetConnection(
+  Future<String?> createOrGetConnection(
     String roomId,
     String user1Email,
     String user2Email,
   ) async {
+    if (user1Email == user2Email) {
+      return null;
+    }
+
     String connectionId1 = '${user1Email}_$user2Email'.replaceAll('.', '_');
     String connectionId2 = '${user2Email}_$user1Email'.replaceAll('.', '_');
 
@@ -76,14 +80,15 @@ class FirestoreSignalingService {
     });
   }
 
-  Future<Stream<DocumentSnapshot<Object?>>> listenToConnection(
+  Stream<DocumentSnapshot> listenToConnection(
     String roomId,
     String connectionId,
-  ) async {
-    final docRef = await _docRef(
-      roomId,
-      connectionId,
-    );
+  ) {
+    final docRef = _firestore
+        .collection('rooms')
+        .doc(roomId)
+        .collection('connections')
+        .doc(connectionId);
     return docRef.snapshots();
   }
 
@@ -107,5 +112,29 @@ class FirestoreSignalingService {
         .doc(roomId)
         .collection('connections')
         .doc(connectionId);
+  }
+
+  Future<bool> isInitiator(
+    String roomId,
+    String connectionId,
+    String userEmail,
+  ) async {
+    final docRef = await _docRef(roomId, connectionId);
+    final doc = await docRef.get();
+    final data = doc.data() as Map<String, dynamic>?;
+    return data != null && data['initiator'] == userEmail;
+  }
+
+  Future<void> updateConnection(
+    String roomId,
+    String connectionId,
+    Map<String, dynamic> data,
+  ) async {
+    await _firestore
+        .collection('rooms')
+        .doc(roomId)
+        .collection('connections')
+        .doc(connectionId)
+        .update(data);
   }
 }
