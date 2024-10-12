@@ -2,6 +2,9 @@ import 'package:chat_rtc/src/features/authentication/bindings/auth_binding.dart'
 import 'package:chat_rtc/src/features/authentication/screens/login_screen.dart';
 import 'package:chat_rtc/src/features/authentication/screens/signup_screen.dart';
 import 'package:chat_rtc/src/features/authentication/screens/splash_screen.dart';
+import 'package:chat_rtc/src/features/chat/binding/call_binding.dart';
+import 'package:chat_rtc/src/features/chat/screens/call_screen.dart';
+import 'package:chat_rtc/src/features/chat/screens/call_setup_screen.dart';
 import 'package:chat_rtc/src/features/chat/screens/chat_screen.dart';
 import 'package:chat_rtc/src/features/rooms/bindings/rooms_binding.dart';
 import 'package:chat_rtc/src/features/rooms/screens/room_details_screen.dart';
@@ -47,6 +50,16 @@ class AppPages {
         RoomsBinding(),
         CallBinding(),
       ],
+    ),
+    GetPage(
+      name: AppRoutes.callSetup,
+      page: () => const CallSetupScreen(),
+      binding: CallBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.call,
+      page: () => const CallScreen(),
+      binding: CallBinding(),
     ),
   ];
 }
